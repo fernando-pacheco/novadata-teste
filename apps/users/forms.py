@@ -1,6 +1,7 @@
 from django import forms
 
 class LoginForms(forms.Form):
+    '''Criação do formulário de login'''	
     nome_login = forms.CharField(
         label="Nome de Login",
         required=True,
@@ -27,6 +28,7 @@ class LoginForms(forms.Form):
 
 
 class CadastroForms(forms.Form):
+    '''Criação do formulário de cadastro'''
     nome_cadastro = forms.CharField(
         label="Nome de Login",
         required=True,
@@ -76,6 +78,7 @@ class CadastroForms(forms.Form):
     )
 
     def clean_nome_cadastro(self):
+        '''Regra de negócio para o formulário de cadastro'''
         nome = self.cleaned_data.get('nome_cadastro')
 
         if nome:
@@ -87,6 +90,7 @@ class CadastroForms(forms.Form):
                 return nome        
 
     def clean_senha_2(self):
+         '''Regra de negócio para o formulário de cadastro'''
          senha_1 = self.cleaned_data.get('senha_1')
          senha_2 = self.cleaned_data.get('senha_2')
 

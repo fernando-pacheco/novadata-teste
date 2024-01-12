@@ -2,6 +2,7 @@ from django import forms
 from .models import Post, Comment
 
 class PostForms(forms.ModelForm):
+    '''Form para o Post'''
     class Meta:
         model = Post
         fields = ['title', 'content']
@@ -11,6 +12,7 @@ class PostForms(forms.ModelForm):
 
 
 class CommentForms(forms.ModelForm):
+    '''Form para o Comment'''
     class Meta:
         model = Comment
         fields = ['content']
@@ -19,6 +21,7 @@ class CommentForms(forms.ModelForm):
         }
         
 class EditCommentForms(forms.ModelForm):
+    '''Form para o Comment'''
     class Meta:
         model = Comment
         fields = ['content']
