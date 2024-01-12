@@ -18,18 +18,19 @@
         </li>
         <ul>
             {% for comment in comments %}
-                <li>
-                    <p><strong>{{ comment.author.username }}</strong> em {{ comment.creation_date }}: {{ comment.content }}</p>
+                <li class="card">
+                    <p>{{ comment.content }}</p>
+                    <p><strong>{{ comment.author.username }}</strong> em {{ comment.creation_date }}</p>
                     
                     {% if user.is_authenticated and comment.author == user %}
-                        <a href="{% url 'editar_comment' post.id comment.id %}"><img src="{% static 'assets/ícones/1x/caneta.png' %}"></a>
-                        <a href="{% url 'deletar_comment' post.id comment.id %}"><img src="{% static 'assets/ícones/1x/lixeira.png' %}"></a>
+                        <div class="acoes">
+                            <a href="{% url 'editar_comment' post.id comment.id %}"><img src="{% static 'assets/ícones/1x/caneta.png' %}"></a>
+                            <a href="{% url 'deletar_comment' post.id comment.id %}"><img src="{% static 'assets/ícones/1x/lixeira.png' %}"></a>
+                        </div>
                     {% endif %}
                 </li>
             {% endfor %}
         </ul>
-    </section>
-    <section class="conteudo">
         <div>
             <form method="post" action="{% url 'novo_comment' post.id %}" class="form">
                 {% csrf_token %}

@@ -34,9 +34,11 @@ body {
     font-family: 'Space Grotesk', sans-serif;
     min-height: 100vh;
     background: linear-gradient(#041833,#04244F,#154580);
-    background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100%;
 }
 ol, ul {
     list-style: none;
@@ -74,48 +76,6 @@ table {
     left: 80px;
 }
 
-.cabecalho {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    margin: 1.5rem 0 4rem 0;
-}
-
-.cabecalho__busca {
-    align-items: center;
-    border-radius: 10px;
-    background: linear-gradient(45deg, #C98CF1,#7B78E5);
-    display: flex;
-    height: auto;
-    justify-content: space-between;
-    padding: 2px;
-    width: auto; 
-}
-
-.busca__fundo {
-    align-items: center;
-    background-color: #041A37;
-    border-radius: 8px;
-    display: flex;
-    margin: 0 auto;
-    width: 100%;
-}
-
-.busca__input {
-    align-items: center;
-    background-color: transparent;
-    border: none;
-    font-size: 1rem;
-    height: 24px;
-    padding: 10px;
-    width: 500px;
-}
-
-.busca__icone {
-    cursor: pointer;
-    width: 2rem;
-    height: 2rem;
-}
 
 .cards {
     width: 100%;
@@ -131,8 +91,7 @@ table {
 .cards__lista{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-content: space-between;
+    justify-content: space-evenly;
 }
 
 .card {
@@ -244,40 +203,6 @@ table {
     font-size: 0.7rem;
 }
 
-.menu-lateral {
-    padding-right: 1.5rem;
-    box-sizing: border-box;
-    min-width: 270px;
-    display: flex;
-}
-
-.menu-lateral__navegacao {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.menu-lateral__navegacao a {
-    font-family: 'Space Grotesk', sans-serif;
-    align-items: center;
-    display: flex;
-    margin-right: 1.5rem;
-    text-decoration: none;
-    color: #D9D9D9;
-    font-size: 24px;
-}
-
-.menu-lateral__navegacao a:last-child {
-    margin-right: 0; 
-}
-
-.menu-lateral__navegacao a:first-child {
-    font-weight: bold;
-    color: #7B78E5;
-}
-
-
-
 
 .populares {
     margin-left: 1.5rem;
@@ -383,8 +308,76 @@ table {
 }
 
 header {
-    background-color: #f8f9fa;
     padding: 15px 0;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.pagina-inicial {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+}
+
+
+/*HEADER*/
+.cabecalho {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5rem 0 4rem 0;
+    width: 80%;
+    flex-wrap: wrap;
+    mix-blend-mode: exclusion;
+}
+
+/*MENU*/
+
+.menu-lateral {
+    box-sizing: border-box;
+    min-width: 270px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+}
+
+.menu-lateral__navegacao {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+    
+}
+
+.menu-lateral__navegacao a {
+    font-family: 'Space Grotesk', sans-serif;
+    align-items: center;
+    display: flex;
+    margin-right: 5%;
+    text-decoration: 0;
+    color: #D9D9D9;
+    font-size: 24px;
+}
+
+.menu-lateral__navegacao a:last-child {
+    min-width: 350px;
+}
+
+.menu-lateral__navegacao a:first-child {
+    font-weight: bold;
+    color: #7B78E5;
+    
+}
+.menu-lateral__navegacao a img {
+    padding: 1%;
 }
 
 nav ul {
@@ -403,33 +396,53 @@ nav ul li a:hover {
     color: #007bff;
 }
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
 
-.pagina-inicial {
-    display: flex;
-    justify-content: space-between;
+
+/*BUSCA*/
+
+.busca__fundo {
     align-items: center;
+    background-color: #041A37;
+    border-radius: 8px;
+    display: flex;
+    margin: 0 auto;
     width: 100%;
 }
 
-.cabecalho {
-    width: 100%;
+.busca__input {
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    height: 24px;
+    padding: 10px;
+    width: 500px;
+}
+
+.busca__icone {
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
 }
 
 .cabecalho__busca {
-    margin: 0 auto;
-    max-width: 500px;
-}
-
-.menu-lateral__navegacao {
+    align-items: flex-end;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #C98CF1,#7B78E5);
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    height: auto;
+    padding: 2px;
+    width: auto;
 }
 
+/* POST */
+
+.principal{
+    width: 80%;
+}
+
+/* COMENTARIO ÍCONES */
+.acoes{
+    display: flex;
+    justify-content: flex-end;
+}

@@ -6,6 +6,7 @@
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit"><img src="{% static 'assets/ícones/1x/check.png' %}"></button>
+        <button type="submit" formaction="{% url 'post' post_id=comment.post.id %}"><img src="{% static 'assets/ícones/1x/cancel.png' %}"></button>
     </form>
-    <a href="{% url 'post' post_id=comment.post.id %}"><img src="{% static 'assets/ícones/1x/cancel.png' %}"></a>
+    
 {% endblock %}
