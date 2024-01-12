@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Post, Comment
 from .forms import PostForms, CommentForms, EditCommentForms
 from django.contrib import messages
-from django.core.cache import cache
+from django.core.cache import caches
 
 def index(request):
     if not request.user.is_authenticated:
@@ -19,11 +19,12 @@ def index(request):
 @login_required(login_url='login')
 def buscar(request):
     if request.method == 'POST':
-        busca = request.POST['busca']
+        busca = request.POST['buscado']
         posts = Post.objects.filter(title__contains=busca)
-        return render(request, 'busca.html', {'buscado': busca, 'posts': posts})
+        return render(request, 'busca.html', {'buscado': busca, 'cards': posts})
     else:
         return render(request, 'busca.html', {})
+
 
 def post(request, post_id):
     post = get_object_or_404(Post.objects.select_related('author'), pk=post_id)
