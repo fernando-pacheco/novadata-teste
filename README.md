@@ -6,8 +6,7 @@ Resolução do teste técnico para a vaga de Desenvolvedor Python - Django
 
 ## Pré-requisitos
 
-Liste todos os pré-requisitos necessários para rodar o seu projeto. Por exemplo:
-- Python (versão)
+- Python 3.12.x
 
 
 ## Instalação
