@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <h2>Editar Comentário</h2>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit"><img src="{% static 'assets/ícones/1x/check.png' %}"></button>
+    </form>
+    <a href="{% url 'post' post_id=comment.post.id %}"><img src="{% static 'assets/ícones/1x/cancel.png' %}"></a>
+{% endblock %}

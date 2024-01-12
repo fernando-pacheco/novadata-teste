@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style_extra %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        .btn-excluir {
+            background-color: #ff0000;
+            color: #ffffff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+{% endblock style_extra %}
+
+{% block content %}
+    <section class="conteudo">
+        <section class="galeria">
+            <div class="cards">
+                <h2 class="cards__titulo">Posts</h2>
+                <ul class="cards__lista">
+                    {% if cards %}
+                        {% for post in cards %}
+                            <li class="card">
+                                <div class="card__info">
+                                    <p class="card__titulo">
+                                        <a href="{% url 'post' post.id %}" class="card__link">{{ post.title }}</a>
+                                    </p>
+                                    <div class="card__texto"> 
+                                        <p class="card__descricao">{{ post.content }}</p>
+                                    </div>
+                                    <p class="card__descricao"><strong>{{post.author}}</strong>: {{ post.publication_date }}</p>
+                                    {% if user.is_authenticated and post.author == user %}
+                                        <form method="post" action="{% url 'deletar_post' post.id %}" style="display: inline;">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn-excluir"><img src="{% static '/assets/ícones/1x/lixeira.png' %}"></button>
+                                        </form>
+                                    {% endif %}
+                                </div>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <li class="card">
+                            <div class="card__info">
+                                <div class="card__texto">
+                                    <p>Posts não encontrados</p>
+                                </div>
+                            </div>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </section>
+    </section>
+{% endblock %}
