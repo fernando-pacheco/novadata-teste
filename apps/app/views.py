@@ -3,14 +3,18 @@ from django.contrib.auth.decorators import login_required
 from .models import Post, Comment
 from .forms import PostForms, CommentForms, EditCommentForms
 from django.contrib import messages
+from django.core.cache import cache
 
 def index(request):
     if not request.user.is_authenticated:
         messages.error(request, "Usuário não logado")
         return redirect('login')
-    
-    posts = Post.objects.order_by("publication_date")
-    return render(request, 'index.html', {"cards": posts})
+    posts = cache.get('posts')
+    if not posts:
+        posts = Post.objects.order_by("publication_date")
+        cache.set('posts', posts, 5)
+
+    return render(request, 'index.html', {'cards': posts})
 
 @login_required(login_url='login')
 def buscar(request):
