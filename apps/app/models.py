@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Post(models.Model):
+    '''Model para criação de posts seguindo a regra de negócio'''
     title = models.CharField(max_length=255)
     content = models.TextField()
     publication_date = models.DateTimeField(auto_now_add=True)
@@ -11,6 +12,7 @@ class Post(models.Model):
         return self.title
 
 class Comment(models.Model):
+    '''Model para criação de comentários seguindo a regra de negócio'''
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
     creation_date = models.DateTimeField(auto_now_add=True)

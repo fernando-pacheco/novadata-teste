@@ -1,4 +1,3 @@
-README
 
 # Novadata - Teste
 
@@ -34,11 +33,6 @@ Realize as migrações pendentes
   python manage.py migrate
 ```
 
-Por fim, suba o servidor local
-```bash
-  python manage.py runserver
-```
-
 ## Variáveis de Ambiente
 
 Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
@@ -48,4 +42,17 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
 `SECRET_KEY` = django-insecure-nvi12p!=s8w!49pf@5iw!@6a#r-t(i00q^xl=@rwg4&bnqqrd+
 
 
+Por fim, suba o servidor local
+```bash
+  python manage.py runserver
+```
+## Uso - Rotas
 
+rotas: 
+    (localhost:8000/api) - API Root DRF | (localhost:8000/app) - Aplicação
+
+Em localhost:8000/app será necessário realizar o cadastro do usuário para entrar na página principal de posts e realizar o cadastro deles. Um usuário pode realizar o post/comentário, editar, ou deletar, desde que seja de sua autoria.
+
+## Rota - admin
+
+Utilizei o honeypot para realizar tratamentos de segurança na aplicação, então a rota para acessar a área de admin do Django: localhost:8000/area-restrita/

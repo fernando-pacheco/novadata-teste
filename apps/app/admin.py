@@ -2,12 +2,14 @@ from django.contrib import admin
 from apps.app.models import Post, Comment
 
 class ListandoPosts(admin.ModelAdmin):
+    '''ModelAdmin para listagem de posts'''
     list_display = ('id', 'title', 'author', 'publication_date')
     list_display_links = ('id', 'title')
     search_fields = ('title', 'content')
     list_per_page = 10
 
 class ListandoComments(admin.ModelAdmin):
+    '''ModelAdmin para listagem de comentários'''
     list_display = ('id', 'author', 'post', 'creation_date')
     list_display_links = ('id', 'author')
     search_fields = ('author', 'content')
