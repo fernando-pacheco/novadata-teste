@@ -53,11 +53,15 @@ def filtro(request):
     posts = Post.objects.order_by("publication_date")
     return render(request, 'index.html', {'card':posts})
 
-def deletar_comment(request, comment_id):
-    comment = Comment.objects.get(id=comment_id)
-    comment.delete()
-    messages.success(request, 'Comentário deletado com sucesso!')
-    return redirect('index')
+def deletar_comment(request, post_id, comment_id):
+    comment = get_object_or_404(Comment, pk=comment_id)
+    if request.user == comment.author:
+        comment.delete()
+        messages.success(request, 'Comentário deletado com sucesso!')
+        return redirect('post', post_id=post_id)
+    else:
+        messages.error(request, 'Você não tem permissão para excluir este comentário.')
+        return redirect('post', post_id=post_id)
 
 def editar_comment(request, post_id, comment_id):
     comment = get_object_or_404(Comment, pk=comment_id)

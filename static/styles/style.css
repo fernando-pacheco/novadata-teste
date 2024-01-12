@@ -433,11 +433,3 @@ body {
     align-items: center;
 }
 
-.btn-excluir {
-    background-color: #ff0000; /* Cor vermelha */
-    color: #ffffff; /* Texto branco */
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
