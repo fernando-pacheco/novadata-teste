@@ -19,22 +19,23 @@ def index(request):
 @login_required(login_url='login')
 def buscar(request):
     if request.method == 'POST':
-        searched = request.POST['searched']
-        posts = Post.objects.filter(title__contains=searched)
-        return render(request, 'search.html', {'searched': searched, 'posts': posts})
+        busca = request.POST['buscado']
+        posts = Post.objects.filter(title__contains=busca)
+        return render(request, 'busca.html', {'buscado': busca, 'cards': posts})
     else:
-        return render(request, 'search.html', {})
+        return render(request, 'busca.html', {})
+
 
 def post(request, post_id):
-    post = get_object_or_404(Post, pk=post_id)
-    comments = Comment.objects.filter(post=post)
+    post = get_object_or_404(Post.objects.select_related('author'), pk=post_id)
+    comments = Comment.objects.filter(post=post).select_related('author')
     return render(request, 'post.html', {'post': post, 'comments': comments})
 
 def novo_post(request):
     if not request.user.is_authenticated:
         messages.error(request, 'Usuário não logado')
         return redirect('login')
-    form = PostForms
+    form = PostForms()
 
     if request.method == 'POST':
         form = PostForms(request.POST)
