@@ -10,7 +10,8 @@ router.register('posts', PostViewSet, basename='Post')
 router.register('comments', CommentViewSet, basename='Comment')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('area-restrita/', admin.site.urls),
+    path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
     path('app/', include('apps.app.urls')),
     path('users/', include('apps.users.urls')),
     path('api/', include(router.urls)),

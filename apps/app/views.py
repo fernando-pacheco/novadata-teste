@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Post, Comment
 from .forms import PostForms, CommentForms, EditCommentForms
 from django.contrib import messages
-from django.core.cache import caches
+from django.core.cache import cache
 
 def index(request):
     if not request.user.is_authenticated:
@@ -35,7 +35,7 @@ def novo_post(request):
     if not request.user.is_authenticated:
         messages.error(request, 'Usuário não logado')
         return redirect('login')
-    form = PostForms
+    form = PostForms()
 
     if request.method == 'POST':
         form = PostForms(request.POST)
