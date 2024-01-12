@@ -446,3 +446,12 @@ nav ul li a:hover {
     display: flex;
     justify-content: flex-end;
 }
+
+.btn-excluir {
+    background-color: #ff0000;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}

@@ -5,11 +5,9 @@
 {% endblock style_extra %}
 {% block content %}
     <section class="conteudo">
+        <h2 class="cards__titulo">{{post.title}}</h2>
         <li class="card">
             <div class="card__info">
-                <p class="card__titulo">
-                    <a href="{% url 'post' post.id %}" class="card__link">{{ post.title }}</a>
-                </p>
                 <div class="card__texto"> 
                     <p class="card__descricao">{{ post.content }}</p>
                 </div>
